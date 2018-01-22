@@ -1,28 +1,39 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { createSelector } from 'reselect';
+import prefixSelector, {name} from './prefixSelectorWithReselect';
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            count: 0
+            count: 0,
+            prefix: 'Hello'
         }
         this.handleClick = this.handleClick.bind(this);
+        this.swapWords = this.swapWords.bind(this);
+
     }
 
     render() {
+        console.log(prefixSelector)
         return (
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">Welcome to React</h1>
+                    <h1 className="App-title">Using {name}</h1>
                 </header>
+                <strong>Render Count: {this.state.count}</strong><br/>
+                <strong>Recomputations: {prefixSelector.recomputations()}</strong>
+                <hr/>
                 <button onClick={ this.handleClick }>
-                    Click Here
+                    Re-render
                 </button>
-                Call Count: {this.state.count}
+                <button onClick={ this.swapWords }>
+                    Swap 'Hello' and 'Goodbye' the Re-Render
+                </button>
+                <h2>Output:</h2>
+                {prefixSelector(this.state)}
             </div>
         );
     }
@@ -30,6 +41,13 @@ class App extends Component {
     handleClick(e) {
         e.preventDefault();
         this.setState({count: this.state.count + 1});
+    }
+
+    swapWords(e) {
+        e.preventDefault();
+        const newPrefix = this.state.prefix === 'Hello' ? 'Goodbye' : 'Hello'
+
+        this.setState({prefix: newPrefix, count: this.state.count + 1})
     }
 }
 
