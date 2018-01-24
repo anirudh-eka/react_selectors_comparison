@@ -1,12 +1,15 @@
-
-const getData = (state) => state.prefix;
+export const getData = (state) => state.prefix;
 export const name = 'Nothing'
 
 let recomputations = 0
-let prefixSelector = function(state) {
+export let prefixSelectorCore = function(getData, state) {
+    console.log('called')
     recomputations++
     return getData(state) + ' World!'
 }
-prefixSelector.recomputations = () => recomputations;
+prefixSelectorCore.recomputations = () => recomputations;
 
-export default prefixSelector;
+let full =  function (state) { prefixSelectorCore(getData, state) };
+full.recomputations = prefixSelectorCore.recomputations;
+
+export default full;
