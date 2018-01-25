@@ -11,7 +11,7 @@ Check in the browser at http://localhost:3000/ by default.
 
 It will count the number of rerenders and recomputations the selector has to do. This will vary depending which tool you use to implement the selector. To change, just change the import file at the top of ./App.js to either
 
-```
+``` javascript
 import prefixSelector, {name} from './prefixSelectorWithNothing';
 // or 
 import prefixSelector, {name} from './prefixSelectorWithReselect';
