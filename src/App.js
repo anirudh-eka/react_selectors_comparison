@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import prefixSelector, {name} from './prefixSelectorWithRamda';
+import prefixSelector, {name} from './prefixSelectorWithNothing';
 
 class App extends Component {
     constructor(props) {
