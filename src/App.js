@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import prefixSelector, {name} from './prefixSelectorWithNothing';
+import prefixSelector, {name} from './prefixSelectorWithRamda';
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            count: 0,
+            count: 1,
             prefix: 'Hello'
         }
         this.handleClick = this.handleClick.bind(this);
